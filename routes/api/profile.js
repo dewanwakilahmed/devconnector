@@ -134,9 +134,9 @@ router.get("/user/:user_id", async (req, res) => {
 
     res.send(profile);
   } catch (err) {
-    // if (err.kind === "ObjectId") {
-    //   return res.status(400).json({ msg: "Profile not found!" });
-    // }
+    if (err.kind === "ObjectId") {
+      return res.status(400).json({ msg: "Profile not found!" });
+    }
 
     console.error(err.message);
   }
